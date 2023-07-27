@@ -4,15 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 /*
-    [] Navigation
-    [] frgamento para agregar y
-*   [] fragmento otro para listar
-    [] interfaz para agregar nueva tarea
+    [x] Navigation
+    [x] frgamento para agregar y
+    [x] interfaz para agregar nueva tarea
 *  [] Room
-*       []dao
+        [x]entity
+*       [x]dao
 *       []base de datos
-*       []entity
 *
+*[] fragmento otro para listar
     [] Recicler view para ver las tareas
 
 *

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegeichon"
+    app:startDestination="@id/agregar">
+    <fragment
+        android:id="@+id/agregar"
+        android:name="com.example.roomej1modulo6.Agregar"
+        android:label="fragment_agregar"
+        tools:layout="@layout/fragment_agregar" />
+</navigation>

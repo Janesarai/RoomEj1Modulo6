@@ -8,5 +8,14 @@
         android:id="@+id/agregar"
         android:name="com.example.roomej1modulo6.Agregar"
         android:label="fragment_agregar"
-        tools:layout="@layout/fragment_agregar" />
+        tools:layout="@layout/fragment_agregar" >
+        <action
+            android:id="@+id/action_agregar_to_lista"
+            app:destination="@id/lista" />
+    </fragment>
+    <fragment
+        android:id="@+id/lista"
+        android:name="com.example.roomej1modulo6.Lista"
+        android:label="fragment_lista"
+        tools:layout="@layout/fragment_lista" />
 </navigation>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.roomej1modulo6.databinding.FragmentAgregarBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class Agregar : Fragment() {
     lateinit var binding: FragmentAgregarBinding
-    lateinit var repositorio: Repositorio
+    private val tareaVM: TareaVM by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +34,11 @@ class Agregar : Fragment() {
     ): View? {
 
         binding = FragmentAgregarBinding.inflate(layoutInflater,container,false)
-        initRepositorio()
         initListener()
         cargarTarea()
         return binding.root
     }
 
-    private fun initRepositorio() {
-        repositorio = Repositorio(TareaBaseDatos.getDatabase(requireContext()).getTaskDao())
-    }
 
     private fun initListener() {
         binding.btnAgregar.setOnClickListener{
@@ -53,15 +50,14 @@ class Agregar : Fragment() {
 
     private fun guardarTarea(texto: String) {
         val tarea = Tarea(texto, "fecha")
-        GlobalScope.launch { repositorio.insertarTask(tarea) }
+        tareaVM.insertarTarea(tarea)
     }
-
-    private fun cargarTarea(){
-            val tareas = repositorio.getTareas().observe(requireActivity()){
+        private fun cargarTarea() {
+            tareaVM.obtenerTareas().observe(viewLifecycleOwner) {
                 val tasksAsText = it.joinToString("\n") { it.nombre }
                 binding.tvTarea.text = tasksAsText
             }
 
         }
-    }
+}
 
